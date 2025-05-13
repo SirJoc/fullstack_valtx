@@ -127,6 +127,9 @@ Bash
 Inicio de sesión:
 ![image](https://github.com/user-attachments/assets/ff54511a-c6dd-41cb-9ae7-9711b0ef6ba1)
 
+Rate Limiting:
+![image](https://github.com/user-attachments/assets/8bfa3a85-cad2-487a-9d97-025e075ff738)
+
 
 SWAGGER:
 ![image](https://github.com/user-attachments/assets/9e07d200-de81-4cdb-8f3c-3d8d4b0d2a51)
