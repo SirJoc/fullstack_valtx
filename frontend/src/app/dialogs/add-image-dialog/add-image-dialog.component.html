@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Agregar Imagen para: {{ data.product.nombre }}</h1>
+
+<div mat-dialog-content>
+  <input hidden #fileInput type="file" (change)="onFileSelected($event)" accept="image/png, image/jpeg, image/gif, image/webp">
+  <button type="button" mat-stroked-button (click)="fileInput.click()" [disabled]="isUploading">
+    <mat-icon>attach_file</mat-icon> Seleccionar Archivo
+  </button>
+
+  <div *ngIf="selectedFileName" class="file-info mt-2">
+    <strong>Archivo seleccionado:</strong> {{ selectedFileName }}
+  </div>
+
+  <div *ngIf="isUploading" class="upload-progress mt-2">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <p>Subiendo imagen...</p>
+  </div>
+
+  <div *ngIf="uploadError" class="error-message mt-2">
+    {{ uploadError }}
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()" [disabled]="isUploading">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onUploadClick()" [disabled]="!selectedFile || isUploading">
+    <mat-icon *ngIf="!isUploading">cloud_upload</mat-icon>
+    <span *ngIf="!isUploading">Subir</span>
+    <span *ngIf="isUploading">Subiendo...</span>
+  </button>
+</div>

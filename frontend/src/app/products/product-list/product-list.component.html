@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="flex justify-center items-center flex-col my-12">
+  <div class="flex">
+    <h2>Mis productos</h2>
+    <button class="ml-5" (click)="openAddProductDialog()" mat-raised-button color="primary">Agregar producto</button>
+  </div>
+
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div class="product-list-container flex gap-4" *ngIf="isLoading === false; else loading">
+    <ng-container *ngIf="products.length > 0; else noProducts">
+      <mat-card *ngFor="let product of products" class="product-card w-80 flex flex-col justify-center items-center">
+        <img mat-card-image
+          class="w-24 mt-8"
+             [src]="getFirstImageUrl(product)"
+             [alt]="product.nombre">
+             <mat-card-header>
+          <mat-card-title>{{ product.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ product.categoria }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end"> <button mat-icon-button color="primary"
+                        aria-label="Edit product"
+                        title="Edit Product"
+                        (click)="editProduct(product)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent"
+                        aria-label="Add image to product"
+                        class="mx-5"
+                        title="Add Image"
+                        (click)="addImage(product)">
+                  <mat-icon>add_a_photo</mat-icon>
+                </button>
+
+                <button mat-icon-button
+                        aria-label="View product images"
+                        title="View Images"
+                        (click)="listImages(product)">
+                  <mat-icon>photo_library</mat-icon>
+                </button>
+                <button mat-icon-button color="warn"  class="ml-3" aria-label="Delete product"
+                        title="Delete Product"
+                        (click)="deleteProduct(product)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+        </mat-card>
+    </ng-container>
+
+    <ng-template #noProducts>
+      <p>No hay productos relacionados a este usuario.</p>
+    </ng-template>
+  </div>
+
+  <ng-template #loading>
+    <p>Cargando...</p>
+    </ng-template>
+</div>

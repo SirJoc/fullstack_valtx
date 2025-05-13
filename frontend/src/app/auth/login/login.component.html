@@ -1,0 +1,62 @@
+<div class="min-h-screen flex items-center justify-center p-4 bg-gray-100">
+  <mat-card class="w-full max-w-md shadow-xl">
+    <mat-card-header class="justify-center py-6">
+      <mat-card-title class="text-3xl font-bold text-center text-gray-700">Iniciar Sesión</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="px-6 pb-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-full mb-4">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput
+                 type="email"
+                 placeholder="tu@ejemplo.com"
+                 formControlName="email"
+                 required
+                 class="text-gray-700">
+          <mat-error *ngIf="email?.hasError('required') && (email?.dirty || email?.touched)">
+            El correo electrónico es <strong>obligatorio</strong>
+          </mat-error>
+          <mat-error *ngIf="email?.hasError('email') && (email?.dirty || email?.touched)">
+            Por favor, ingrese un correo electrónico válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-6">
+          <mat-label>Contraseña</mat-label>
+          <input matInput
+                 [type]="hidePassword ? 'password' : 'text'"
+                 formControlName="password"
+                 required
+                 class="text-gray-700">
+          <mat-error *ngIf="password?.hasError('required') && (password?.dirty || password?.touched)">
+            La contraseña es <strong>obligatoria</strong>
+          </mat-error>
+          <mat-error *ngIf="password?.hasError('minlength') && (password?.dirty || password?.touched)">
+            La contraseña debe tener al menos {{ password?.errors?.['minlength']?.requiredLength }} caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <div *ngIf="errorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 text-sm" role="alert">
+          <strong class="font-bold">Error:</strong>
+          <span class="block sm:inline"> {{ errorMessage }}</span> </div>
+
+        <button mat-raised-button
+                color="primary"
+                type="submit"
+                class="w-full py-3 text-lg transition duration-150 ease-in-out"
+                [disabled]="loginForm.invalid || isLoading">
+          <div *ngIf="isLoading" class="flex items-center justify-center">
+            <mat-progress-spinner
+              color="accent"
+              mode="indeterminate"
+              diameter="24"
+              class="mr-2">
+            </mat-progress-spinner>
+            <span>Ingresando...</span>
+          </div>
+          <span *ngIf="!isLoading">Ingresar</span>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

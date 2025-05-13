@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Editar Producto: {{ productData.nombre }}</h1>
+<div mat-dialog-content>
+  <p>Modifica los detalles del producto:</p>
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Nombre del Producto</mat-label>
+    <input matInput [(ngModel)]="productData.nombre" name="nombre" required cdkFocusInitial>
+    <mat-error *ngIf="!productData.nombre.trim()">El nombre es requerido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full mt-4">
+    <mat-label>Categoría del Producto</mat-label>
+    <input matInput [(ngModel)]="productData.categoria" name="categoria" required>
+    <mat-error *ngIf="!productData.categoria.trim()">La categoría es requerida</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSaveClick()"
+          [disabled]="!productData.nombre.trim() || !productData.categoria.trim()">
+    Guardar Cambios
+  </button>
+</div>

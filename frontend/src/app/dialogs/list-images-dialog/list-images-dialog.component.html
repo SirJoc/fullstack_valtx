@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Imágenes para el producto: {{ data.product.nombre }}</h1>
+
+<div mat-dialog-content>
+  <p *ngIf="!data.product.images || data.product.images.length === 0">
+    No tiene imágenes.
+  </p>
+
+  <div class="image-gallery-container relative flex gap-4" *ngIf="data.product.images && data.product.images.length > 0">
+    <div *ngFor="let image of data.product.images" class="image-item flex flex-col justify-between items-center w-24">
+      <img [src]="image.url" [alt]="'Image for ' + data.product.nombre" class="gallery-image w-24">
+      <button mat-icon-button disabled>
+          <mat-icon class="w-10">photo_library</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCloseClick()">Cerrar</button>
+</div>

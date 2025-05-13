@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Agregar Nuevo Producto</h1>
+
+<div mat-dialog-content>
+  <p>Por favor, ingresa los detalles del nuevo producto.</p>
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Nombre del Producto</mat-label>
+    <input matInput [(ngModel)]="newProduct.nombre" name="nombre" required cdkFocusInitial>
+    <mat-error *ngIf="!newProduct.nombre">El nombre es requerido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full mt-4"> <mat-label>Categoría del Producto</mat-label>
+    <input matInput [(ngModel)]="newProduct.categoria" name="categoria" required>
+    <mat-error *ngIf="!newProduct.categoria">La categoría es requerida</mat-error>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSaveClick()" [disabled]="!newProduct.nombre.trim() || !newProduct.categoria.trim()">
+    Guardar Producto
+  </button>
+</div>

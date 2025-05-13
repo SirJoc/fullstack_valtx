@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+
+<div mat-dialog-content>
+  <p [innerHTML]="message"></p> </div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()">{{ cancelButtonText }}</button>
+  <button mat-raised-button color="warn" (click)="onConfirmClick()" cdkFocusInitial>{{ confirmButtonText }}</button>
+  </div>
