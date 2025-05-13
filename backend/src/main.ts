@@ -3,15 +3,18 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('Bootstrap');
+  app.use(helmet());
   app.enableCors({
-    origin: 'http://localhost:4200', // Specific origin for your Angular app
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Allowed HTTP methods
-    allowedHeaders: 'Content-Type, Accept, Authorization', // Allowed headers (include 'Authorization' for JWT)
-    credentials: true, // Allow cookies/authorization headers to be sent
+    origin: 'http://localhost:4200',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type, Accept, Authorization',
+    credentials: true,
   });
 
 
@@ -40,6 +43,19 @@ async function bootstrap() {
 
   const jwtAuthGuard = app.get(JwtAuthGuard);
   app.useGlobalGuards(jwtAuthGuard);
+
+  app.use(
+    rateLimit({
+      windowMs: 15 * 60 * 1000,
+      max: 100,
+      message: 'Demasiadas solicitudes desde esta IP, por favor intenta de nuevo después de 15 minutos.',
+      standardHeaders: true,
+      legacyHeaders: false,
+    }),
+  );
+
   await app.listen(process.env.PORT ?? 3000);
+  logger.log(`La aplicación se está ejecutando en: ${await app.getUrl()}`);
+  logger.log(`Swagger UI disponible en: ${await app.getUrl()}/openapi`);
 }
 bootstrap();
