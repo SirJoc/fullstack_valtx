@@ -92,7 +92,7 @@ Bash
 
     Documentación de la API (Swagger):
         Una vez que el backend esté en ejecución, puedes acceder a la documentación de la API generada por Swagger (OpenAPI) en la siguiente ruta: http://localhost:3000/openapi
-        ![image](https://github.com/user-attachments/assets/8ebdb95b-f499-4ccc-98c1-ed95c90fe570)
+![image](https://github.com/user-attachments/assets/8ebdb95b-f499-4ccc-98c1-ed95c90fe570)
 
 
 🖥️ Frontend (Angular)
@@ -124,26 +124,26 @@ Bash
 
 🖼️ Vistas Previas del Proyecto (Ejemplos)
 
-    Inicio de sesión:
-    ![image](https://github.com/user-attachments/assets/ff54511a-c6dd-41cb-9ae7-9711b0ef6ba1)
+Inicio de sesión:
+![image](https://github.com/user-attachments/assets/ff54511a-c6dd-41cb-9ae7-9711b0ef6ba1)
 
 
-    SWAGGER:
-    ![image](https://github.com/user-attachments/assets/9e07d200-de81-4cdb-8f3c-3d8d4b0d2a51)
-
-    
-    Listado de Productos:
-    ![image](https://github.com/user-attachments/assets/e77c7a79-f46a-4579-a278-efebe514864a)
+SWAGGER:
+![image](https://github.com/user-attachments/assets/9e07d200-de81-4cdb-8f3c-3d8d4b0d2a51)
 
 
-    Formulario de Creación/Edición de Producto:
-    ![image](https://github.com/user-attachments/assets/1fa341eb-23d6-4267-b911-145b4c160308)
-    ![image](https://github.com/user-attachments/assets/03118860-3be4-4730-9f1b-b83928d4a0f2)
+Listado de Productos:
+![image](https://github.com/user-attachments/assets/e77c7a79-f46a-4579-a278-efebe514864a)
 
 
-    Funcionalidad de Carga de Imágenes:
-    ![image](https://github.com/user-attachments/assets/8b930b8f-34f8-4ffd-815e-d81e578e4b3c)
-    ![image](https://github.com/user-attachments/assets/4546bb86-4a66-4a59-81e6-b51e3351bb91)
-    ![image](https://github.com/user-attachments/assets/f416c113-c32e-426f-a384-0bf1f1421285)
+Formulario de Creación/Edición de Producto:
+![image](https://github.com/user-attachments/assets/1fa341eb-23d6-4267-b911-145b4c160308)
+![image](https://github.com/user-attachments/assets/03118860-3be4-4730-9f1b-b83928d4a0f2)
+
+
+Funcionalidad de Carga de Imágenes:
+![image](https://github.com/user-attachments/assets/8b930b8f-34f8-4ffd-815e-d81e578e4b3c)
+![image](https://github.com/user-attachments/assets/4546bb86-4a66-4a59-81e6-b51e3351bb91)
+![image](https://github.com/user-attachments/assets/f416c113-c32e-426f-a384-0bf1f1421285)
 
     
